@@ -120,6 +120,14 @@ export function toLines(val: string[]): string {
 //% block="add to list $list value $val"
 //% group="Lists"
 export function listAddValue(list:string,  val: number) {
+    const count:number = listCount(list);
+    const position_key = PRE_LIST + list + "." + count;
+
+    settings.writeNumber( position_key, val );
+
+    // inc list counter
+    const count_key = PRE_LIST + list + ':C:';
+    settings.writeNumber( count_key, count+1);
     
 }
 
@@ -127,7 +135,10 @@ export function listAddValue(list:string,  val: number) {
 //% block="value from list $list at index $index"
 //% group="Lists"
 export function listGetValueAt(list: string, index: number):number {
-    return 0
+
+    const position_key = PRE_LIST + list + "." + index;
+    return  settings.readNumber( position_key );
+    
 }
 
 //% blockId=listCount
@@ -135,6 +146,14 @@ export function listGetValueAt(list: string, index: number):number {
 //% group="Lists"
 export function listCount(list: string): number {
     return 0
+
+    const count_key = PRE_LIST +list+ ':C:';
+    const count = settings.readNumber(count_key);
+
+    if(count == undefined ) return 0;
+
+    return count;
+
 }
 
 
