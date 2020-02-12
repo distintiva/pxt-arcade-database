@@ -1,4 +1,12 @@
-// Add your code here
+/** ********************************************************
+ * By Distintiva Solutions (www.distintivasolutions.com)
+ * Jose Carlos (info@distintivasolutions.com)
+ * 
+ * https://github.com/distintiva/pxt-arcade-database
+ * 
+ ***********************************************************/
+
+
 //% weight=0 color=#C52746 icon="\uf1c0" block="Database"
 //% advanced=false
 //% groups="['Pairs Key = Value', 'Lists']"
