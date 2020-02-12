@@ -16,6 +16,7 @@ const PRE_LIST = PRE + "L.";
 //% blockId=setTextValue
 //% block="set key $key to text $val"
 //% group="Pairs Key = Value"
+//% weight=100
 export function setTextValue(key:string, val: string) {
     settings.writeString(PRE_CFG_TEXT + key, val)
     settings.writeNumber(PRE_CFG_NUM + key,  parseInt( val ) );
@@ -26,6 +27,7 @@ export function setTextValue(key:string, val: string) {
 //% blockId=getTextValue
 //% block="get key $key as text"
 //% group="Pairs Key = Value"
+//% weight=100
 export function getTextValue(key: string): string {
     return settings.readString(PRE_CFG_TEXT + key)
 }
@@ -33,6 +35,7 @@ export function getTextValue(key: string): string {
 //% blockId=setNumberValue
 //% block="set key $key to number $val"
 //% group="Pairs Key = Value"
+//% weight=100
 export function setNumberValue(key: string, val: number) {
     settings.writeNumber(PRE_CFG_NUM + key, val)  
     settings.writeString(PRE_CFG_TEXT + key, val.toString()) 
@@ -43,6 +46,7 @@ export function setNumberValue(key: string, val: number) {
 //% blockId=getNumberValue
 //% block="get key $key as number"
 //% group="Pairs Key = Value"
+//% weight=100
 export function getNumberValue(key: string): number {
     return settings.readNumber(PRE_CFG_NUM + key)
 }
@@ -50,6 +54,7 @@ export function getNumberValue(key: string): number {
 //% blockId=existsKey
 //% block="exists key $key"
 //% group="Pairs Key = Value"
+//% weight=100
 export function existsKey(key: string): boolean {
     return settings.exists(PRE_CFG_NUM + key) || settings.exists(PRE_CFG_TEXT + key);
     
@@ -58,6 +63,7 @@ export function existsKey(key: string): boolean {
 //% blockId=removeKey
 //% block="remove key $key"
 //% group="Pairs Key = Value"
+//% weight=100
 export function removeKey(key: string): void {
     settings.remove(PRE_CFG_NUM + key);
     settings.remove(PRE_CFG_TEXT + key);
@@ -66,6 +72,7 @@ export function removeKey(key: string): void {
 //% blockId=deleteAll
 //% block="delete database"
 //% group="Database"
+//% weight=50
 export function deleteAll(): void {
    
    settings.clear();
@@ -81,6 +88,7 @@ export function deleteAll(): void {
 //% blockId=exists
 //% block="database exists"
 //% group="Database"
+//% weight=50
 export function exists(): boolean {
     return settings.exists(PRE + "ON");
 }
@@ -89,6 +97,7 @@ export function exists(): boolean {
 //% blockId=toLine
 //% block="to line $val"
 //% group="Other"
+//% weight=20
 export function toLine(val:string):string{
     if(val.length>=24) return val;
 
@@ -104,6 +113,7 @@ export function toLine(val:string):string{
 //% blockId=toLines
 //% block="lines $val"
 //% group="Other"
+//% weight=20
 export function toLines(val: string[]): string {
     
     let ret: string = "";
@@ -119,6 +129,7 @@ export function toLines(val: string[]): string {
 //% blockId=listAddValueAt
 //% block="add to list $list value $val"
 //% group="Lists"
+//% weight=80
 export function listAddValue(list:string,  val: number) {
     const count:number = listCount(list);
     const position_key = PRE_LIST + list + "." + count;
@@ -134,6 +145,7 @@ export function listAddValue(list:string,  val: number) {
 //% blockId=listGetValue
 //% block="value from list $list at index $index"
 //% group="Lists"
+//% weight=80
 export function listGetValueAt(list: string, index: number):number {
 
     const position_key = PRE_LIST + list + "." + index;
@@ -144,6 +156,7 @@ export function listGetValueAt(list: string, index: number):number {
 //% blockId=listCount
 //% block="length of $list"
 //% group="Lists"
+//% weight=80
 export function listCount(list: string): number {
 
     const count_key = PRE_LIST +list+ ':C:';
@@ -157,6 +170,7 @@ export function listCount(list: string): number {
 
 //% block="delete list $list"
 //% group="Lists"
+//% weight=80
 export function deleteList(list: string) {
     
     const allListkeys: string[] = settings.list(PRE_LIST + list);
