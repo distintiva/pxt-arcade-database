@@ -12,62 +12,36 @@ const PRE_LIST = PRE + "L.";
 
 
 
+//% blockId=toLine
+//% block="to line $val"
+//% group="Other"
+//% weight=20
+export function toLine(val: string): string {
+    if (val.length >= 24) return val;
 
-//% blockId=setTextValue
-//% block="set key $key to text $val"
-//% group="Pairs Key = Value"
-//% weight=100
-export function setTextValue(key:string, val: string) {
-    settings.writeString(PRE_CFG_TEXT + key, val)
-    settings.writeNumber(PRE_CFG_NUM + key,  parseInt( val ) );
+    let blanks: number = 24 - val.length;
+    for (let c = 0; c <= blanks; c++) {
+        val = val.concat(" ");
+    }
+    return val;
 
-    settings.writeNumber(PRE+ "ON", 1);
 }
 
-//% blockId=getTextValue
-//% block="get key $key as text"
-//% group="Pairs Key = Value"
-//% weight=100
-export function getTextValue(key: string): string {
-    return settings.readString(PRE_CFG_TEXT + key)
+
+//% blockId=toLines
+//% block="lines $val"
+//% group="Other"
+//% weight=20
+export function toLines(val: string[]): string {
+
+    let ret: string = "";
+    for (let l = 0; l < val.length; l++) {
+        ret = ret.concat(toLine(val[l]));
+    }
+    return ret;
+
 }
 
-//% blockId=setNumberValue
-//% block="set key $key to number $val"
-//% group="Pairs Key = Value"
-//% weight=100
-export function setNumberValue(key: string, val: number) {
-    settings.writeNumber(PRE_CFG_NUM + key, val)  
-    settings.writeString(PRE_CFG_TEXT + key, val.toString()) 
-
-    settings.writeNumber(PRE + "exists", 1); 
-}
-
-//% blockId=getNumberValue
-//% block="get key $key as number"
-//% group="Pairs Key = Value"
-//% weight=100
-export function getNumberValue(key: string): number {
-    return settings.readNumber(PRE_CFG_NUM + key)
-}
-
-//% blockId=existsKey
-//% block="exists key $key"
-//% group="Pairs Key = Value"
-//% weight=100
-export function existsKey(key: string): boolean {
-    return settings.exists(PRE_CFG_NUM + key) || settings.exists(PRE_CFG_TEXT + key);
-    
-}
-
-//% blockId=removeKey
-//% block="remove key $key"
-//% group="Pairs Key = Value"
-//% weight=100
-export function removeKey(key: string): void {
-    settings.remove(PRE_CFG_NUM + key);
-    settings.remove(PRE_CFG_TEXT + key);
-}
 
 //% blockId=deleteAll
 //% block="delete database"
@@ -94,35 +68,7 @@ export function exists(): boolean {
 }
 
 
-//% blockId=toLine
-//% block="to line $val"
-//% group="Other"
-//% weight=20
-export function toLine(val:string):string{
-    if(val.length>=24) return val;
 
-    let blanks: number = 24 - val.length;
-    for (let c = 0 ;c<=blanks;c++){
-        val = val.concat(" ");
-    }
-    return val;
-
-}
-
-
-//% blockId=toLines
-//% block="lines $val"
-//% group="Other"
-//% weight=20
-export function toLines(val: string[]): string {
-    
-    let ret: string = "";
-    for(let l =0; l< val.length; l++ ){
-                ret = ret.concat(  toLine( val[l])  );
-    }
-    return ret;
-
-}
 
 
 
@@ -179,6 +125,63 @@ export function deleteList(list: string) {
         settings.remove(value);
     })
 
+}
+
+
+//% blockId=setTextValue
+//% block="set key $key to text $val"
+//% group="Pairs Key = Value"
+//% weight=100
+export function setTextValue(key: string, val: string) {
+    settings.writeString(PRE_CFG_TEXT + key, val)
+    settings.writeNumber(PRE_CFG_NUM + key, parseInt(val));
+
+    settings.writeNumber(PRE + "ON", 1);
+}
+
+//% blockId=getTextValue
+//% block="get key $key as text"
+//% group="Pairs Key = Value"
+//% weight=100
+export function getTextValue(key: string): string {
+    return settings.readString(PRE_CFG_TEXT + key)
+}
+
+//% blockId=setNumberValue
+//% block="set key $key to number $val"
+//% group="Pairs Key = Value"
+//% weight=100
+export function setNumberValue(key: string, val: number) {
+    settings.writeNumber(PRE_CFG_NUM + key, val)
+    settings.writeString(PRE_CFG_TEXT + key, val.toString())
+
+    settings.writeNumber(PRE + "exists", 1);
+}
+
+//% blockId=getNumberValue
+//% block="get key $key as number"
+//% group="Pairs Key = Value"
+//% weight=100
+export function getNumberValue(key: string): number {
+    return settings.readNumber(PRE_CFG_NUM + key)
+}
+
+//% blockId=existsKey
+//% block="exists key $key"
+//% group="Pairs Key = Value"
+//% weight=100
+export function existsKey(key: string): boolean {
+    return settings.exists(PRE_CFG_NUM + key) || settings.exists(PRE_CFG_TEXT + key);
+
+}
+
+//% blockId=removeKey
+//% block="remove key $key"
+//% group="Pairs Key = Value"
+//% weight=100
+export function removeKey(key: string): void {
+    settings.remove(PRE_CFG_NUM + key);
+    settings.remove(PRE_CFG_TEXT + key);
 }
 
 
