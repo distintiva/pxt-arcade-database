@@ -1,4 +1,4 @@
-# pxt-arcade-settings ![Build status badge](https://github.com/distintiva/pxt-arcade-settings/workflows/MakeCode/badge.svg)
+# pxt-arcade-databse ![Build status badge](https://github.com/distintiva/pxt-arcade-settings/workflows/MakeCode/badge.svg)
 
 
 
