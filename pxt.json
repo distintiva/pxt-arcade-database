@@ -1,7 +1,7 @@
 {
     "name": "pxt-arcade-database",
     "version": "0.0.2",
-    "description": "",
+    "description": "Store and read permanent settings in your console",
     "dependencies": {
         "device": "*"
     },
