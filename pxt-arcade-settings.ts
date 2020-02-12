@@ -63,6 +63,21 @@ export function removeKey(key: string): void {
     settings.remove(PRE_CFG_TEXT + key);
 }
 
+//% blockId=deleteAll
+//% block="delete database"
+//% group="Database"
+export function deleteAll(): void {
+   
+   settings.clear();
+  /*  const allkeys:string[] = settings.list(PRE);
+
+    allkeys.forEach(function (value: string, index: number) {
+        settings.
+    })*/
+
+}
+
+
 //% blockId=exists
 //% block="database exists"
 //% group="Database"
