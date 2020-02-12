@@ -2,29 +2,17 @@
 
 
 
-## Use this extension
+## Description
 
-This repository can be added as an **extension** in MakeCode.
+You can store data **key=>value** in your console flash memory
 
-* open https://arcade.makecode.com/
-* click on **New Project**
-* click on **Extensions** under the gearwheel menu
-* search for the URL of this repository and import
+Also you can create lists of data
 
-## Edit this extension
-
-To edit this repository in MakeCode.
-
-* open https://arcade.makecode.com/
-* click on **Import** then click on **Import URL**
-* paste the repository URL and click import
 
 ## Blocks preview
 
-This image shows the blocks code from the last commit in master.
-This image may take a few minutes to refresh.
 
-![A rendered view of the blocks](https://github.com/distintiva/pxt-arcade-settings/raw/master/.makecode/blocks.png)
+![A rendered view of the blocks](blocks.png)
 
 ## Supported targets
 
