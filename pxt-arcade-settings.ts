@@ -145,7 +145,6 @@ export function listGetValueAt(list: string, index: number):number {
 //% block="length of $list"
 //% group="Lists"
 export function listCount(list: string): number {
-    return 0
 
     const count_key = PRE_LIST +list+ ':C:';
     const count = settings.readNumber(count_key);
@@ -153,6 +152,18 @@ export function listCount(list: string): number {
     if(count == undefined ) return 0;
 
     return count;
+
+}
+
+//% block="delete list $list"
+//% group="Lists"
+export function deleteList(list: string) {
+    
+    const allListkeys: string[] = settings.list(PRE_LIST + list);
+
+    allListkeys.forEach(function (value: string, index: number) {
+        settings.remove(value);
+    })
 
 }
 
