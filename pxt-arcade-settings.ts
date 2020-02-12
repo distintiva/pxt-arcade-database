@@ -18,6 +18,9 @@ const PRE_LIST = PRE + "L.";
 //% group="Pairs Key = Value"
 export function setTextValue(key:string, val: string) {
     settings.writeString(PRE_CFG_TEXT + key, val)
+    settings.writeNumber(PRE_CFG_NUM + key,  parseInt( val ) );
+
+    settings.writeNumber(PRE+ "ON", 1);
 }
 
 //% blockId=getTextValue
@@ -31,7 +34,10 @@ export function getTextValue(key: string, val: string): string {
 //% block="set key $key to number $val"
 //% group="Pairs Key = Value"
 export function setNumberValue(key: string, val: number) {
-    settings.writeNumber(PRE_CFG_NUM + key, val)
+    settings.writeNumber(PRE_CFG_NUM + key, val)  
+    settings.writeString(PRE_CFG_TEXT + key, val.toString()) 
+
+    settings.writeNumber(PRE + "exists", 1); 
 }
 
 //% blockId=getNumberValue
@@ -55,6 +61,42 @@ export function existsKey(key: string): boolean {
 export function removeKey(key: string): void {
     settings.remove(PRE_CFG_NUM + key);
     settings.remove(PRE_CFG_TEXT + key);
+}
+
+//% blockId=exists
+//% block="database exists"
+//% group="Database"
+export function exists(): boolean {
+    return settings.exists(PRE + "ON");
+}
+
+
+//% blockId=toLine
+//% block="to line $val"
+//% group="Other"
+export function toLine(val:string):string{
+    if(val.length>=24) return val;
+
+    let blanks: number = 24 - val.length;
+    for (let c = 0 ;c<=blanks;c++){
+        val = val.concat(" ");
+    }
+    return val;
+
+}
+
+
+//% blockId=toLines
+//% block="lines $val"
+//% group="Other"
+export function toLines(val: string[]): string {
+    
+    let ret: string = "";
+    for(let l =0; l< val.length; l++ ){
+                ret = ret.concat(  toLine( val[l])  );
+    }
+    return ret;
+
 }
 
 /*
