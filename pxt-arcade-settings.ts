@@ -26,7 +26,7 @@ export function setTextValue(key:string, val: string) {
 //% blockId=getTextValue
 //% block="get key $key as text"
 //% group="Pairs Key = Value"
-export function getTextValue(key: string, val: string): string {
+export function getTextValue(key: string): string {
     return settings.readString(PRE_CFG_TEXT + key)
 }
 
@@ -43,7 +43,7 @@ export function setNumberValue(key: string, val: number) {
 //% blockId=getNumberValue
 //% block="get key $key as number"
 //% group="Pairs Key = Value"
-export function getNumberValue(key: string, val: number): number {
+export function getNumberValue(key: string): number {
     return settings.readNumber(PRE_CFG_NUM + key)
 }
 
@@ -114,9 +114,9 @@ export function toLines(val: string[]): string {
 
 }
 
-/*
 
-//% blockId=listAddValue
+
+//% blockId=listAddValueAt
 //% block="add to list $list value $val"
 //% group="Lists"
 export function listAddValue(list:string,  val: number) {
@@ -126,7 +126,7 @@ export function listAddValue(list:string,  val: number) {
 //% blockId=listGetValue
 //% block="value from list $list at index $index"
 //% group="Lists"
-export function listGetValue(list: string, index: number):number {
+export function listGetValueAt(list: string, index: number):number {
     return 0
 }
 
@@ -136,7 +136,7 @@ export function listGetValue(list: string, index: number):number {
 export function listCount(list: string): number {
     return 0
 }
-*/
+
 
 
 
